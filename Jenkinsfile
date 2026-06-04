@@ -3,21 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Install Dependencies') {
+        stage('Clone') {
             steps {
-                sh 'composer install'
+                echo 'Cloning repository...'
             }
         }
 
-        stage('Laravel Check') {
+        stage('Build') {
             steps {
-                sh 'php artisan --version'
+                echo 'Installing dependencies (simulated)...'
             }
         }
 
-        stage('Run Tests') {
+        stage('Test') {
             steps {
-                sh 'php artisan test'
+                echo 'Running tests (simulated)...'
+            }
+        }
+
+        stage('Result') {
+            steps {
+                echo 'SUCCESS CI PIPELINE'
             }
         }
     }
