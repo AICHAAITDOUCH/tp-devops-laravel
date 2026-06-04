@@ -3,24 +3,28 @@ pipeline {
 
     stages {
 
-        stage(' Préparation (Setup)') {
+        stage('Clone Repository') {
             steps {
-                sh 'cp -n .env.example .env || true'
+                git 'https://github.com/AICHAAITDOUCH/tp-devops-laravel.git'
             }
         }
 
-        stage(' Installation') {
+        stage('Install Dependencies') {
             steps {
                 sh 'composer install'
-                sh 'php artisan key:generate'
             }
         }
 
-        stage(' Tests') {
+        stage('Laravel Check') {
+            steps {
+                sh 'php artisan --version'
+            }
+        }
+
+        stage('Run Tests') {
             steps {
                 sh 'php artisan test'
             }
         }
-
     }
 }
