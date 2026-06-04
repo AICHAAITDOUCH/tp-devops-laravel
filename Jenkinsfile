@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/AICHAAITDOUCH/tp-devops-laravel.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'composer install'
